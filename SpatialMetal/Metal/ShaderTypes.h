@@ -1,4 +1,3 @@
-//
 //  ShaderTypes.h
 
 #ifndef ShaderTypes_h

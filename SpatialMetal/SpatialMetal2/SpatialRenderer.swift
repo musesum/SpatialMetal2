@@ -48,7 +48,7 @@ extension SpatialRenderer: RendererProtocol {
             fatalError("\(#function) Error: \(error)")
         }
     }
-    func makePipeline(_ layoutRenderer: LayerRenderer) {
+    func makePipeline(_ layerRenderer: LayerRenderer) {
         guard let library = device.makeDefaultLibrary() else { return err("library = nil")}
         guard let earthMesh else { return err("earthMesh")}
         guard let starsMesh else { return err("starsMesh")}
@@ -80,48 +80,50 @@ extension SpatialRenderer: RendererProtocol {
     }
 
     /// Update projection and rotation
-    func updateUniforms(_ drawable: LayerRenderer.Drawable) {
+    func updateUniforms(_ layerDrawable: LayerRenderer.Drawable) {
         
         let translateMat = translateQuat(x: 0.0, y: 0.0, z: -8.0)
         let rotationAxis = SIMD3<Float>(0, 1, 0)
 
-        let earthRotation = rotateQuat(radians: rotation, axis: rotationAxis)
+        let earthRotation = rotateQuat(radians: rotation, 
+                                       axis: rotationAxis)
         let earthModelMat = translateMat * earthRotation
-        earthEyeBuf?.updateUniforms(drawable, earthModelMat)
+        earthEyeBuf?.updateUniforms(layerDrawable, earthModelMat)
 
-        let starsRotation = rotateQuat(radians: 0, axis: rotationAxis)
+        let starsRotation = rotateQuat(radians: 0, 
+                                       axis: rotationAxis)
         let starsModelMat = translateMat * starsRotation
-        starsEyeBuf?.updateUniforms(drawable, starsModelMat)
+        starsEyeBuf?.updateUniforms(layerDrawable, starsModelMat)
 
         rotation += 0.003
     }
 
-    func drawAndPresent(_ commandBuf: MTLCommandBuffer,
-                        _ frame: LayerRenderer.Frame,
-                        _ drawable: LayerRenderer.Drawable) {
+    func renderLayer(_ commandBuf    : MTLCommandBuffer,
+                     _ layerFrame    : LayerRenderer.Frame,
+                     _ layerDrawable : LayerRenderer.Drawable) {
 
-        let renderPass = makeRenderPass(drawable: drawable)
-        
+        let renderPass = makeRenderPass(layerDrawable: layerDrawable)
+
         guard let starsMesh, let starsPipe, let starsEyeBuf,
               let earthMesh, let earthPipe, let earthEyeBuf,
-              let renderCommand = commandBuf .makeRenderCommandEncoder(
+              let renderCmd = commandBuf.makeRenderCommandEncoder(
                 descriptor: renderPass) else { fatalError(#function) }
 
-        renderCommand.label = "Spatial"
-        renderCommand.pushDebugGroup("Spatial")
+        renderCmd.label = "Spatial"
+        renderCmd.pushDebugGroup("Spatial")
 
-        let viewports = drawable.views.map { $0.textureMap.viewport }
-        renderCommand.setViewports(viewports)
+        let viewports = layerDrawable.views.map { $0.textureMap.viewport }
+        renderCmd.setViewports(viewports)
 
-        starsEyeBuf.setMappings(drawable, viewports, renderCommand)
-        starsMesh.draw(renderCommand, starsPipe, .clockwise)
+        starsEyeBuf.setMappings(layerDrawable, viewports, renderCmd)
+        starsMesh.drawMesh(renderCmd, starsPipe, .clockwise)
 
-        earthEyeBuf.setMappings(drawable, viewports, renderCommand)
-        earthMesh.draw(renderCommand, earthPipe, .counterClockwise)
+        earthEyeBuf.setMappings(layerDrawable, viewports, renderCmd)
+        earthMesh.drawMesh(renderCmd, earthPipe, .counterClockwise)
 
-        renderCommand.popDebugGroup()
-        renderCommand.endEncoding()
-        drawable.encodePresent(commandBuffer: commandBuf)
+        renderCmd.popDebugGroup()
+        renderCmd.endEncoding()
+        layerDrawable.encodePresent(commandBuffer: commandBuf)
         commandBuf.commit()
     }
 

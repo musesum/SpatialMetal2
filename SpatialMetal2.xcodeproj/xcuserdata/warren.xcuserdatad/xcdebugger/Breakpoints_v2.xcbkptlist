@@ -84,5 +84,69 @@
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "476F739B-A32F-4CE5-908B-04DC4B0C16F9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpatialMetal/SpatialMetal2/MeshTexture.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "drawMesh(_:_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD3BB9DD-F9CC-494E-BAEF-BB1F9B6BAB4F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpatialMetal/SpatialMetal2/UniformEyeBuf.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "updateUniforms(_:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FD3BB9DD-F9CC-494E-BAEF-BB1F9B6BAB4F - c0ba6c8b474fa06a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpatialMetal2.UniformEyeBuf.updateUniforms(__C.cp_drawable_t, __C.simd_float4x4) -&gt; ()"
+                  moduleName = "SpatialMetal2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/warren/Dev/Spatial/SpatialMetal2/SpatialMetal/SpatialMetal2/UniformEyeBuf.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "448">
+               </Location>
+               <Location
+                  uuid = "FD3BB9DD-F9CC-494E-BAEF-BB1F9B6BAB4F - c0ba6c8b474fa06a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpatialMetal2.UniformEyeBuf.updateUniforms(__C.cp_drawable_t, __C.simd_float4x4) -&gt; ()"
+                  moduleName = "SpatialMetal2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/warren/Dev/Spatial/SpatialMetal2/SpatialMetal/SpatialMetal2/UniformEyeBuf.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "532">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

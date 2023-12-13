@@ -11,7 +11,7 @@ public protocol RendererProtocol {
 
     func updateUniforms(_ drawable: LayerRenderer.Drawable)
 
-    func drawAndPresent(_ commandBuf: MTLCommandBuffer,
-                        _ frame: LayerRenderer.Frame,
-                        _ drawable: LayerRenderer.Drawable)
+    func renderLayer(_ commandBuf: MTLCommandBuffer,
+                     _ layerFrame: LayerRenderer.Frame,
+                     _ layerDrawable: LayerRenderer.Drawable)
 }
