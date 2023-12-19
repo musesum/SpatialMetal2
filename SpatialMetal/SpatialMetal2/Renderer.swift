@@ -10,26 +10,30 @@ let TripleBufferCount = 3
 
 class Renderer {
 
-    var delegate: RendererProtocol?
+    let layerRenderer: LayerRenderer
     let device: MTLDevice
+    let library: MTLLibrary
     let commandQueue: MTLCommandQueue
+
+    var delegate: RendererProtocol?
     let tripleSemaphore = DispatchSemaphore(value: TripleBufferCount)
     let arSession = ARKitSession()
     let worldTracking = WorldTrackingProvider()
-    let layerRenderer: LayerRenderer
+
     var rotation: Float = 0
 
     init(_ layerRenderer: LayerRenderer) {
 
         self.layerRenderer = layerRenderer
         self.device = MTLCreateSystemDefaultDevice()!
+        self.library = device.makeDefaultLibrary()!
         self.commandQueue = device.makeCommandQueue()!
     }
 
     func setDelegate(_ delegate: RendererProtocol) {
         self.delegate = delegate
         delegate.makeResources()
-        delegate.makePipeline(layerRenderer)
+        delegate.makePipeline()
     }
 
     func makeRenderPass(layerDrawable: LayerRenderer.Drawable) -> MTLRenderPassDescriptor {
@@ -72,12 +76,8 @@ class Renderer {
         }
 
         layerFrame.startSubmission()
-
-        let time = LayerRenderer.Clock.Instant.epoch.duration(to:  .frameTiming.presentationTime).timeInterval
-
+        let time = LayerRenderer.Clock.Instant.epoch.duration(to:  layerDrawable.frameTiming.presentationTime).timeInterval
         layerDrawable.deviceAnchor = worldTracking.queryDeviceAnchor(atTimestamp: time)
-
-        delegate.updateUniforms(layerDrawable)
         delegate.renderLayer(commandBuf, layerFrame, layerDrawable)
         layerFrame.endSubmission()
     }

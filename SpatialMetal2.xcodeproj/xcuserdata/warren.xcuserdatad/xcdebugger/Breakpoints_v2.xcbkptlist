@@ -87,63 +87,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "476F739B-A32F-4CE5-908B-04DC4B0C16F9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpatialMetal/SpatialMetal2/MeshTexture.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "drawMesh(_:_:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FD3BB9DD-F9CC-494E-BAEF-BB1F9B6BAB4F"
+            uuid = "40DE40A0-C262-479F-9CDD-A646A2990A56"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SpatialMetal/SpatialMetal2/UniformEyeBuf.swift"
+            filePath = "SpatialMetal/SpatialMetal2/RenderNode.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "updateUniforms(_:_:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "makePipeline(_:_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "FD3BB9DD-F9CC-494E-BAEF-BB1F9B6BAB4F - c0ba6c8b474fa06a"
+                  uuid = "40DE40A0-C262-479F-9CDD-A646A2990A56 - 1b7e62524894074c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "SpatialMetal2.UniformEyeBuf.updateUniforms(__C.cp_drawable_t, __C.simd_float4x4) -&gt; ()"
+                  symbolName = "SpatialMetal2.RenderNode.makePipeline(__C.MTLDevice, __C.CP_OBJECT_cp_layer_renderer, Swift.String, Swift.String) -&gt; ()"
                   moduleName = "SpatialMetal2"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/warren/Dev/Spatial/SpatialMetal2/SpatialMetal/SpatialMetal2/UniformEyeBuf.swift"
+                  urlString = "file:///Users/warren/Dev/Spatial/SpatialMetal2/SpatialMetal/SpatialMetal2/RenderNode.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "448">
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "1116">
                </Location>
                <Location
-                  uuid = "FD3BB9DD-F9CC-494E-BAEF-BB1F9B6BAB4F - c0ba6c8b474fa06a"
+                  uuid = "40DE40A0-C262-479F-9CDD-A646A2990A56 - 6730eaaef7430ae9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "SpatialMetal2.UniformEyeBuf.updateUniforms(__C.cp_drawable_t, __C.simd_float4x4) -&gt; ()"
+                  symbolName = "SpatialMetal2.RenderNode.makePipeline(Swift.String, Swift.String) -&gt; ()"
                   moduleName = "SpatialMetal2"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/warren/Dev/Spatial/SpatialMetal2/SpatialMetal/SpatialMetal2/UniformEyeBuf.swift"
+                  urlString = "file:///Users/warren/Dev/Spatial/SpatialMetal2/SpatialMetal/SpatialMetal2/RenderNode.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "532">
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "1204">
                </Location>
             </Locations>
          </BreakpointContent>

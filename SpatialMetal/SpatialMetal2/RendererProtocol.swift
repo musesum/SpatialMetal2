@@ -7,7 +7,7 @@ public protocol RendererProtocol {
 
     func makeResources()
 
-    func makePipeline(_ layoutRenderer: LayerRenderer)
+    func makePipeline()
 
     func updateUniforms(_ drawable: LayerRenderer.Drawable)
 

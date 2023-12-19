@@ -23,7 +23,7 @@ vertex VertexOut vertexEarth
                   float4(in.normal, 0.0f)).xyz;
 
     out.texCoord = in.texCoord;
-    out.texCoord.x = 1.0f - out.texCoord.x; // Flip uvs horizontally to match Model I/O
+    out.texCoord.x = 1.0f - out.texCoord.x; // Flip horizontally to match Model I/O
     return out;
 }
 
