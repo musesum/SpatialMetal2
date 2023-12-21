@@ -1,5 +1,5 @@
 //  Created by musesum on 8/4/23.
-
+#if os(visionOS)
 import MetalKit
 import ARKit
 import Spatial
@@ -8,14 +8,14 @@ import simd
 
 let TripleBufferCount = 3
 
-class Renderer {
+class RenderLayer {
 
     let layerRenderer: LayerRenderer
     let device: MTLDevice
     let library: MTLLibrary
     let commandQueue: MTLCommandQueue
 
-    var delegate: RendererProtocol?
+    var delegate: RenderLayerProtocol?
     let tripleSemaphore = DispatchSemaphore(value: TripleBufferCount)
     let arSession = ARKitSession()
     let worldTracking = WorldTrackingProvider()
@@ -30,7 +30,7 @@ class Renderer {
         self.commandQueue = device.makeCommandQueue()!
     }
 
-    func setDelegate(_ delegate: RendererProtocol) {
+    func setDelegate(_ delegate: RenderLayerProtocol) {
         self.delegate = delegate
         delegate.makeResources()
         delegate.makePipeline()
@@ -104,8 +104,9 @@ class Renderer {
             case .paused:  layerRenderer.waitUntilRunning()
             case .running: autoreleasepool { renderFrame() }
             case .invalidated: break
-            @unknown default:  print("⁉️ Renderer::runLoop @unknown default")
+            @unknown default:  print("⁉️ RenderLayer::runLoop @unknown default")
             }
         }
     }
 }
+#endif

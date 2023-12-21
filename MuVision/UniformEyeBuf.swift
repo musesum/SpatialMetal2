@@ -1,5 +1,5 @@
 // created by musesum
-
+#if os(visionOS)
 import Spatial
 import CompositorServices
 
@@ -79,7 +79,7 @@ class UniformEyeBuf<Item> {
             if infinitelyFar {
                 viewModel.columns.3 = simd_make_float4(0.0, 0.0, 0.0, 1.0)
             }
-            let eyeUniforms = Uniforms(.init(projection), viewModel)
+            let eyeUniforms = UniformEye(.init(projection), viewModel)
             return eyeUniforms as! Item
         }
     }
@@ -102,7 +102,8 @@ class UniformEyeBuf<Item> {
 
         renderCmd.setVertexBuffer(uniformBuf,
                                   offset: tripleOffset,
-                                  index: Vertexi.uniforms /* 3 */)
+                                  index: VertexIndex.uniforms /* 3 */)
     }
 
 }
+#endif

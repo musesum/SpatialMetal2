@@ -1,6 +1,6 @@
 #include <metal_stdlib>
 #include <simd/simd.h>
-#include "ShaderTypes.h"
+#include "SpatialTypes.h"
 
 using namespace metal;
 
@@ -12,14 +12,14 @@ vertex VertexOut vertexEarth
 {
     VertexOut out;
 
-    Uniforms uniEye = uniEyes.eye[ampId];
+    UniformEye eye = uniEyes.eye[ampId];
     float4 position = float4(in.position, 1.0);
 
-    out.position = (uniEye.projection *
-                    uniEye.viewModel *
+    out.position = (eye.projection *
+                    eye.viewModel *
                     position);
 
-    out.normal = (uniEye.viewModel *
+    out.normal = (eye.viewModel *
                   float4(in.normal, 0.0f)).xyz;
 
     out.texCoord = in.texCoord;

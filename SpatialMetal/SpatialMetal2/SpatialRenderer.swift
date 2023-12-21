@@ -5,12 +5,13 @@ import MetalKit
 import ARKit
 import Spatial
 import CompositorServices
+import MuVision
 
-class SpatialRenderer: Renderer {
-
+class SpatialRenderer: RenderLayer {
+    
     var starsNode: RenderNode!
     var earthNode: RenderNode!
-
+    
     override init(_ layerRenderer: LayerRenderer) {
         super.init(layerRenderer)
         starsNode = RenderNode(self)
@@ -20,8 +21,8 @@ class SpatialRenderer: Renderer {
     }
 }
 
-extension SpatialRenderer: RendererProtocol {
-
+extension SpatialRenderer: RenderLayerProtocol {
+    
     func makeResources() {
         // stars is from 8k_stars_milky_way.jpg via
         // https://www.solarsystemscope.com/textures/ -- CC Atribution 4.0
@@ -39,12 +40,12 @@ extension SpatialRenderer: RendererProtocol {
         earthNode.makePipeline("vertexEarth", "fragmentEarth")
         starsNode.makePipeline("vertexStars", "fragmentStars")
     }
-
+    
     /// Update projection and rotation
     func updateUniforms(_ layerDrawable: LayerRenderer.Drawable) {
         
         rotation += 0.003
-
+        
         let translateMatrix = translateQuat(x: 0.0, y: 0.0, z: -8.0)
         let rotationAxis = SIMD3<Float>(0, 1, 0)
         let earthRotation = rotateQuat(radians: rotation, axis: rotationAxis)
@@ -52,32 +53,32 @@ extension SpatialRenderer: RendererProtocol {
         earthNode.eyeBuf?.updateEyeUniforms(layerDrawable, earthMatrix)
         starsNode.eyeBuf?.updateEyeUniforms(layerDrawable, translateMatrix)
     }
-
+    
     func renderLayer(_ commandBuf    : MTLCommandBuffer,
                      _ layerFrame    : LayerRenderer.Frame,
                      _ layerDrawable : LayerRenderer.Drawable) {
-
+        
         updateUniforms(layerDrawable)
-
+        
         let renderPass = makeRenderPass(layerDrawable: layerDrawable)
-
+        
         guard let renderCmd = commandBuf.makeRenderCommandEncoder(
-                descriptor: renderPass) else { fatalError(#function) }
-
+            descriptor: renderPass) else { fatalError(#function) }
+        
         renderCmd.label = "Spatial"
         renderCmd.pushDebugGroup("Spatial")
-
+        
         let viewports = layerDrawable.views.map { $0.textureMap.viewport }
         renderCmd.setViewports(viewports)
-
+        
         starsNode.drawLayer(layerDrawable, renderCmd, viewports)
         earthNode.drawLayer(layerDrawable, renderCmd, viewports)
-
+        
         renderCmd.popDebugGroup()
         renderCmd.endEncoding()
         layerDrawable.encodePresent(commandBuffer: commandBuf)
         commandBuf.commit()
     }
-
+    
 }
 

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/warren/Dev/Spatial/SpatialMetal2/SpatialMetal/SpatialMetal2.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

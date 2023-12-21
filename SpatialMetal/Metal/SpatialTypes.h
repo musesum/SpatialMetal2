@@ -12,14 +12,14 @@ typedef NSInteger EnumBackingType;
 
 #include <simd/simd.h>
 
-enum Vertexi {
+enum VertexIndex {
     position = 0,
     texCoord = 1,
     normal   = 2,
     uniforms = 3
 };
 
-enum Texturei {
+enum TextureIndex {
     colori = 0,
 };
 
@@ -35,13 +35,13 @@ struct VertexOut {
     float3 normal;
 };
 
-struct Uniforms {
+struct UniformEye {
     matrix_float4x4 projection;
     matrix_float4x4 viewModel;
 };
 
 struct UniformEyes {
-    Uniforms eye[2];
+    UniformEye eye[2];
 };
 
 #endif

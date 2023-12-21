@@ -3,17 +3,17 @@
 import MetalKit
 import Spatial
 
-class MeshBase {
+open class MeshBase {
 
-    var device: MTLDevice
-    var winding: MTLWinding
-    var metalVD: MTLVertexDescriptor
-    var stencil: MTLDepthStencilState
-    var mtkMesh: MTKMesh?
+    private var device: MTLDevice
+    public var winding: MTLWinding
+    public var stencil: MTLDepthStencilState
+    public var metalVD: MTLVertexDescriptor
+    public var mtkMesh: MTKMesh?
 
-    init(device  : MTLDevice,
-         compare : MTLCompareFunction,
-         winding : MTLWinding)  {
+    public init(device  : MTLDevice,
+                compare : MTLCompareFunction,
+                winding : MTLWinding)  {
 
         self.device = device
         self.winding = winding
@@ -27,32 +27,37 @@ class MeshBase {
         makeMetalVD()
     }
     func makeMetalVD() {
-        addVertexFormat(.float3, Vertexi.position)
-        addVertexFormat(.float2, Vertexi.texcoord)
-        addVertexFormat(.float3, Vertexi.normal  )
+        addVertexFormat(.float3, VertexIndex.position)
+        addVertexFormat(.float2, VertexIndex.texcoord)
+        addVertexFormat(.float3, VertexIndex.normal  )
     }
-    func addVertexFormat(_ format: MTLVertexFormat,
-                         _ index: Int) {
+    public func addVertexFormat(_ format: MTLVertexFormat,
+                                _ index: Int) {
         let stride: Int
         switch format {
         case .float2: stride = MemoryLayout<Float>.size * 2
         case .float3: stride = MemoryLayout<Float>.size * 3
-        default: return
+        case .float4: stride = MemoryLayout<Float>.size * 4
+        default: return err("unknown format \(format)")
         }
         metalVD.attributes[index].format = format
         metalVD.attributes[index].offset = 0
         metalVD.attributes[index].bufferIndex = index
+
         metalVD.layouts[index].stride = stride
         metalVD.layouts[index].stepRate = 1
         metalVD.layouts[index].stepFunction = .perVertex
+
+        func err(_ msg: String) {
+            print("⁉️ addVertexFormat error: \(msg)")
+        }
     }
-    func drawMesh(_ renderCmd: MTLRenderCommandEncoder,
-                  _ renderPipe: MTLRenderPipelineState) {
+
+    open func drawMesh(_ renderCmd: MTLRenderCommandEncoder) {
 
         guard let mtkMesh else { return err("mesh") }
 
-        renderCmd.setCullMode(.back)
-        renderCmd.setRenderPipelineState(renderPipe)
+        //???? renderCmd.setCullMode(.back)
         renderCmd.setFrontFacing(winding)
         renderCmd.setDepthStencilState(stencil)
 

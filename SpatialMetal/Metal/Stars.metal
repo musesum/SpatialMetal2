@@ -1,6 +1,6 @@
 #include <metal_stdlib>
 #include <simd/simd.h>
-#include "ShaderTypes.h"
+#include "SpatialTypes.h"
 
 using namespace metal;
 
@@ -11,8 +11,7 @@ vertex VertexOut vertexStars
  constant UniformEyes &eyes  [[ buffer(uniforms) ]])
 {
     VertexOut out;
-
-    Uniforms eye = eyes.eye[amp_id];
+    UniformEye eye = eyes.eye[amp_id];
 
     float4 position = float4(in.position, 1.0);
 

@@ -1,9 +1,11 @@
 // created by musesum.
 
+#if os(visionOS)
+
 import Metal
 import CompositorServices
 
-public protocol RendererProtocol {
+public protocol RenderLayerProtocol {
 
     func makeResources()
 
@@ -15,3 +17,5 @@ public protocol RendererProtocol {
                      _ layerFrame: LayerRenderer.Frame,
                      _ layerDrawable: LayerRenderer.Drawable)
 }
+
+#endif

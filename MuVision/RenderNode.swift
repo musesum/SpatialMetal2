@@ -5,14 +5,14 @@ import CompositorServices
 
 class RenderNode {
 
-    var renderer: Renderer
+    var renderer: RenderLayer
 
     var renderPipe: MTLRenderPipelineState?
-    var mesh: MeshTexEllipse?
-    var eyeBuf: UniformEyeBuf<Uniforms>?
+    var mesh: MeshBase?
+    var eyeBuf: UniformEyeBuf<UniformEye>?
 
 
-    init(_ renderer: Renderer) {
+    init(_ renderer: RenderLayer) {
         self.renderer = renderer
     }
 
@@ -47,13 +47,14 @@ class RenderNode {
         }
     }
 
-    func drawLayer(_ layerDrawable : LayerRenderer.Drawable,
+    func drawLayer(_ layerDrawable: LayerRenderer.Drawable,
                    _ renderCmd: MTLRenderCommandEncoder,
                    _ viewports: [MTLViewport]) {
 
         guard let eyeBuf, let mesh, let renderPipe else { return }
         eyeBuf.setViewMappings(renderCmd, layerDrawable, viewports)
         eyeBuf.setUniformBuf(renderCmd)
-        mesh.drawMesh(renderCmd, renderPipe)
+        renderCmd.setRenderPipelineState(renderPipe)
+        mesh.drawMesh(renderCmd)
     }
 }
