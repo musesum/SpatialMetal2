@@ -23,7 +23,7 @@ enum TextureIndex {
     colori = 0,
 };
 
-struct VertexIn {
+struct VertexMesh {
     float3 position [[ attribute(position) ]];
     float2 texCoord [[ attribute(texCoord) ]];
     float3 normal   [[ attribute(normal)   ]];

@@ -6,7 +6,7 @@ using namespace metal;
 
 vertex VertexOut vertexStars
 (
- VertexIn             in     [[ stage_in ]],
+ VertexMesh           in     [[ stage_in ]],
  ushort               amp_id [[ amplification_id ]],
  constant UniformEyes &eyes  [[ buffer(uniforms) ]])
 {

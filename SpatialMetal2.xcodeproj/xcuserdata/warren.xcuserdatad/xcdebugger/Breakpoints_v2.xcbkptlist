@@ -132,5 +132,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8C460CC0-1DC4-4042-9605-611E7F9AE4AC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../DeepMuse/Packages/MuVision/Sources/MuVision/RenderNode.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "err(_:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "8C460CC0-1DC4-4042-9605-611E7F9AE4AC - 6cbab30d3ceb83ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "err(Swift.String) -&gt; ()"
+                  moduleName = "SpatialMetal2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/warren/Dev/DeepMuse/Packages/MuVision/Sources/MuVision/RenderNode.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "8C460CC0-1DC4-4042-9605-611E7F9AE4AC - 6cbab30d3ceb83ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "err(Swift.String) -&gt; ()"
+                  moduleName = "SpatialMetal2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/warren/Dev/DeepMuse/Packages/MuVision/Sources/MuVision/RenderNode.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
