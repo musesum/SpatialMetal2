@@ -33,7 +33,6 @@
 		805ACA0F2AD83D0D00FDE5F2 /* SpatialRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialRenderer.swift; sourceTree = "<group>"; };
 		805ACA132AD83D0D00FDE5F2 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		805ACA142AD83D0D00FDE5F2 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		80BE47512B34BD1D00EB05F4 /* MuVision */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MuVision; path = ../../DeepMuse/Packages/MuVision; sourceTree = "<group>"; };
 		830175AA2A44AC87008CAD8B /* SpatialMetal2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpatialMetal2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		830175C82A44BE8C008CAD8B /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		830175C92A44BE8C008CAD8B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -95,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				805AC9FF2AD83CED00FDE5F2 /* README.md */,
-				80BE47512B34BD1D00EB05F4 /* MuVision */,
 				805ACA0C2AD83D0D00FDE5F2 /* SpatialMetal2 */,
 				805ACA012AD83CFF00FDE5F2 /* Metal */,
 				805ACA092AD83D0600FDE5F2 /* Resources */,
