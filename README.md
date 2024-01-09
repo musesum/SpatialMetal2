@@ -15,5 +15,3 @@ Refactored to align with XCode Template:
     ```
     File >> New Project >> visionOS >> App >> Window,Metal,Full
     ```
-    
-    

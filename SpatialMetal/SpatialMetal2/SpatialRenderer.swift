@@ -29,8 +29,10 @@ extension SpatialRenderer: RenderLayerProtocol {
         starsNode.eyeBuf = UniformEyeBuf(device, "stars", far: true)
         earthNode.eyeBuf = UniformEyeBuf(device, "earth", far: false)
         do {
-            try earthNode.mesh = MeshTexEllipse(device, texName: "Earth", compare: .less,    radius: 2.5, inward: false, winding: .counterClockwise)
-            try starsNode.mesh = MeshTexEllipse(device, texName: "Stars", compare: .greater, radius: 3.0, inward: true, winding: .clockwise)
+            let earthDepthRender = DepthRender(.back, .counterClockwise, .less   , true)
+            let starsDepthRender = DepthRender(.back, .clockwise       , .greater, true)
+            try earthNode.mesh = MeshTexEllipse(device, "Earth", earthDepthRender, radius: 2.5, inward: false)
+            try starsNode.mesh = MeshTexEllipse(device, "Stars", starsDepthRender, radius: 3.0, inward: true )
         } catch {
             fatalError("\(#function) Error: \(error)")
         }
@@ -65,10 +67,7 @@ extension SpatialRenderer: RenderLayerProtocol {
         renderCmd.label = "Spatial"
         renderCmd.pushDebugGroup("Spatial")
 
-        let viewports = layerDrawable.views.map { $0.textureMap.viewport }
-        renderCmd.setViewports(viewports)
-        
-        setViewMappings(renderCmd, layerDrawable, viewports)
+        setViewMappings(renderCmd, layerDrawable)
         updateUniforms(layerDrawable)
 
         starsNode.drawLayer(renderCmd)
