@@ -67,7 +67,7 @@ extension SpatialRenderer: RenderLayerProtocol {
         renderCmd.label = "Spatial"
         renderCmd.pushDebugGroup("Spatial")
 
-        setViewMappings(renderCmd, layerDrawable)
+        SpatialRenderer.setViewMappings(renderCmd, layerDrawable)
         updateUniforms(layerDrawable)
 
         starsNode.drawLayer(renderCmd)
