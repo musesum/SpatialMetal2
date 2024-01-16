@@ -29,8 +29,8 @@ extension SpatialRenderer: RenderLayerProtocol {
         starsNode.eyeBuf = UniformEyeBuf(device, "stars", far: true)
         earthNode.eyeBuf = UniformEyeBuf(device, "earth", far: false)
         do {
-            let earthDepthRender = DepthRender(.back, .counterClockwise, .less   , true)
-            let starsDepthRender = DepthRender(.back, .clockwise       , .greater, true)
+            let earthDepthRender = RenderDepth(.back, .counterClockwise, .less   , true)
+            let starsDepthRender = RenderDepth(.back, .clockwise       , .greater, true)
             try earthNode.mesh = MeshTexEllipse(device, "Earth", earthDepthRender, radius: 2.5, inward: false)
             try starsNode.mesh = MeshTexEllipse(device, "Stars", starsDepthRender, radius: 3.0, inward: true )
         } catch {
